@@ -1,11 +1,40 @@
 # mobile-duplicate-asset-detector
-### Why this tool exists
+# Duplicate Asset Detector (Android & iOS)
 
-Duplicate assets rarely appear as bugs.  
-They usually surface as unplanned cleanup work.
+A lightweight tool to detect duplicate drawable and image assets across Android and iOS projects using content-based hashing.
 
-In many projects, developers end up spending hours—or even an entire day—manually finding and deleting duplicate drawables. This kind of repetitive work is frustrating, mentally draining, and negatively impacts developer productivity without adding real value to the product.
+---
 
-Code reviews and naming conventions help, but they don’t scale well for visual assets.
+## 🚨 Problem
 
-By automating duplicate detection early (locally and in CI), this tool prevents those “cleanup days” entirely and keeps asset hygiene enforced as part of the engineering workflow.
+Duplicate assets silently creep into codebases:
+- Same image, different names
+- Increased APK / IPA size
+- Harder code reviews
+- Wasted developer time in cleanup
+
+---
+
+## ✅ Solution
+
+This tool detects duplicates using:
+- MD5 content hashing (exact match)
+- XML normalization (vector drawables)
+- Optional pHash (visual similarity)
+
+---
+
+## 🔧 Features
+
+- Supports PNG, WebP, XML, JPG
+- Works on Android & iOS assets
+- CI/CD friendly
+- Fast (<30 seconds)
+- Zero configuration
+
+---
+
+## 🚀 Usage
+
+```bash
+bash scripts/detect-duplicate-images.sh ./app/src/main/res/

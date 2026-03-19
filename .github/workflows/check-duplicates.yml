@@ -1,0 +1,20 @@
+name: Duplicate Asset Check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+      - name: Run duplicate detection
+        run: bash scripts/detect-duplicate-images.sh .
